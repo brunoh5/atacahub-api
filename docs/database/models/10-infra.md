@@ -25,8 +25,8 @@ Registra todas as ações relevantes realizadas no sistema para fins de auditori
 | entity_type | VARCHAR(100) | Sim | Entidade afetada |
 | entity_id | UUID | Não | Registro afetado |
 | action | VARCHAR(100) | Sim | Ação executada |
-| old_values | JSONB | Não | Valores anteriores |
-| new_values | JSONB | Não | Valores posteriores |
+| old_data | JSONB | Não | Valores anteriores |
+| new_data | JSONB | Não | Valores posteriores |
 | ip_address | VARCHAR(45) | Não | IPv4 ou IPv6 |
 | user_agent | TEXT | Não | Navegador ou aplicação |
 | created_at | TIMESTAMP | Sim | |

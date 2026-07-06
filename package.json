@@ -1,0 +1,54 @@
+{
+  "name": "atacahub-api",
+  "version": "1.0.0",
+  "description": "O **AtacaHub API** é uma API REST desenvolvida com foco em escalabilidade, organização e boas práticas de engenharia de software.",
+  "main": "dist/src/main.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "services:up": "docker compose -f src/infra/compose.yml up -d",
+    "start:dev": "npm run services:up && nest start --watch",
+    "test": "npm run services:up && vitest",
+    "build": "nest build",
+    "migrations:create": "node-pg-migrate create -m src/infra/database/migrations --envPath .env -j ts",
+    "migrations:down": "node-pg-migrate down -m src/infra/database/migrations --envPath .env -j ts",
+    "migrations:up": "node-pg-migrate -m src/infra/database/migrations up -j ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunoh5/atacahub-api.git"
+  },
+  "keywords": [],
+  "author": "Bruno H Santos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brunoh5/atacahub-api/issues"
+  },
+  "homepage": "https://github.com/brunoh5/atacahub-api#readme",
+  "dependencies": {
+    "@nestjs/common": "^11.1.27",
+    "@nestjs/config": "^4.0.4",
+    "@nestjs/core": "^11.1.27",
+    "@nestjs/event-emitter": "^3.1.0",
+    "@nestjs/platform-express": "^11.1.27",
+    "argon2": "^0.44.0",
+    "node-pg-migrate": "^8.0.4",
+    "pg": "^8.22.0",
+    "reflect-metadata": "^0.2.2",
+    "supertest": "^7.2.2",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.2",
+    "@faker-js/faker": "^10.5.0",
+    "@nestjs/cli": "^11.0.0",
+    "@nestjs/schematics": "^11.0.0",
+    "@nestjs/testing": "^11.1.27",
+    "@types/node": "^26.1.0",
+    "@types/pg": "^8.20.0",
+    "@types/supertest": "^7.2.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
+  }
+}

@@ -1,3 +1,13 @@
+Template
+
+Status: ⬜ Não iniciado
+
+Status: 🟨 Em desenvolvimento
+
+Status: ✅ Concluído
+
+Status: 🧪 Testado
+
 # Estrutura da pasta `/docs`
 
 A pasta `/docs` concentra toda a documentação técnica do projeto **AtacaHub API**. O objetivo é manter todos os artefatos de arquitetura, requisitos e decisões organizados de forma padronizada.
