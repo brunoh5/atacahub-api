@@ -4,30 +4,61 @@ import {
   OnModuleDestroy,
   OnModuleInit,
 } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
 import { runner } from "node-pg-migrate";
-import { Pool, type QueryConfig, type QueryResult } from "pg";
+import {
+  Pool,
+  type QueryConfig,
+  type QueryResult,
+  type QueryResultRow,
+} from "pg";
 import { EnvService } from "../env/env.service";
+
+type QueryFn = <T extends QueryResultRow = QueryResultRow>(query: {
+  text: string;
+  values?: unknown[];
+}) => Promise<QueryResult<T>>;
 
 @Injectable()
 export class DatabaseService implements OnModuleInit, OnModuleDestroy {
   private readonly logger = new Logger(DatabaseService.name);
 
-  private readonly configService = new ConfigService(EnvService);
+  private readonly pool: Pool;
 
-  private readonly pool = new Pool({
-    host: this.configService.get('POSTGRES_HOST'),
-    port: this.configService.get('POSTGRES_PORT'),
-    user: this.configService.get('POSTGRES_USER'),
-    database: this.configService.get('POSTGRES_DB'),
-    password: this.configService.get('POSTGRES_PASSWORD'),
-  });
+  constructor(private readonly envService: EnvService) {
+    this.pool = new Pool({
+      host: this.envService.get("POSTGRES_HOST"),
+      port: this.envService.get("POSTGRES_PORT"),
+      user: this.envService.get("POSTGRES_USER"),
+      database: this.envService.get("POSTGRES_DB"),
+      password: this.envService.get("POSTGRES_PASSWORD"),
+    });
+  }
 
-  private readonly migrationsOptions = {
-    databaseUrl: process.env.DATABASE_URL as string,
-    dir: "./src/infra/database/migrations/",
-    migrationsTable: "pgmigrations",
-  };
+  async transactions<T>(callback: (query: QueryFn) => Promise<T>): Promise<T> {
+    const start = performance.now();
+
+    const client = await this.pool.connect();
+
+    try {
+      await client.query("BEGIN");
+
+      const result = await callback((query) => client.query(query));
+
+      await client.query("COMMIT");
+
+      const duration = performance.now() - start;
+
+      this.logger.debug(`Transaction time: [${duration.toFixed(0)}ms]`);
+
+      return result;
+    } catch (err) {
+      await client.query("ROLLBACK");
+
+      throw err;
+    } finally {
+      client.release();
+    }
+  }
 
   async query(query: QueryConfig): Promise<QueryResult> {
     const start = performance.now();
@@ -67,15 +98,38 @@ export class DatabaseService implements OnModuleInit, OnModuleDestroy {
 
   async migrationsUp() {
     await runner({
-      ...this.migrationsOptions,
+      databaseUrl: this.envService.get("DATABASE_URL"),
+      dir: "./src/infra/database/migrations/",
+      migrationsTable: "pgmigrations",
       direction: "up",
+      logger: this.envService.get("NODE_ENV") === 'test'
+        ? {
+          debug: () => { },
+          info: () => { },
+          warn: () => { },
+          error: () => { },
+        }
+        : {
+          debug: this.logger.debug.bind(this.logger),
+          info: this.logger.log.bind(this.logger),
+          warn: this.logger.warn.bind(this.logger),
+          error: this.logger.error.bind(this.logger),
+        },
     });
   }
 
   async migrationsDown() {
     await runner({
-      ...this.migrationsOptions,
+      databaseUrl: this.envService.get("DATABASE_URL"),
+      dir: "./src/infra/database/migrations/",
+      migrationsTable: "pgmigrations",
       direction: "down",
+    });
+  }
+
+  async clearDatabase() {
+    await this.query({
+      text: "drop schema public cascade; create schema public;"
     });
   }
 }

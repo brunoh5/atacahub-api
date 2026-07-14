@@ -3,29 +3,36 @@ import { type ColumnDefinitions, MigrationBuilder } from 'node-pg-migrate';
 export const shorthands: ColumnDefinitions | undefined = undefined;
 
 export async function up(pgm: MigrationBuilder): Promise<void> {
-  pgm.createTable('audit_logs', {
+  pgm.createTable('active_tokens', {
     id: {
       type: 'uuid',
       primaryKey: true,
       default: pgm.func('uuidv7()')
     },
     user_id: {
-      type: "uuid",
+      type: 'uuid',
       references: "users",
+      notNull: true
     },
-    entity_type: {
-      type: "varchar(100)",
+    token_hash: {
+      type: "text",
       notNull: true,
     },
-    entity_id: "uuid",
-    action: {
-      type: "varchar(100)",
+    type: {
+      type: "varchar(50)",
+      notNull: true
+    },
+    expires_at: {
+      type: "timestamptz",
       notNull: true,
     },
-    old_data: "JSONB",
-    new_date: "JSONB",
-    ip_address: "INET",
-    user_agent: "text",
+    used_at: {
+      type: "timestamptz",
+    },
+    revoked_at: {
+      type: "timestamptz",
+    },
+    metadata: "JSONB",
     created_at: {
       type: "timestamptz",
       notNull: true,
@@ -35,5 +42,5 @@ export async function up(pgm: MigrationBuilder): Promise<void> {
 }
 
 export async function down(pgm: MigrationBuilder): Promise<void> {
-  pgm.dropTable("audit_logs");
+  pgm.dropTable("active_tokens");
 }

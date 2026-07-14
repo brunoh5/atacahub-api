@@ -3,6 +3,7 @@ import argon2 from "argon2";
 import TestAgent from "supertest/lib/agent";
 import { createTestApp } from "@/infra/create-test-app";
 import faker from "@/shared/faker";
+import { getUserEmail } from "@/shared/tests/get-user-email";
 import { UsersRepository } from "../repositories/UsersRespository";
 
 describe("users.controller", () => {
@@ -22,7 +23,7 @@ describe("users.controller", () => {
   test("create new user", async () => {
     const email = faker.internet.email();
 
-    const response = await request.post("/users/register").send({
+    const response = await request.post("/v1/users/register").send({
       first_name: faker.person.firstName(),
       last_name: faker.person.lastName(),
       email,
@@ -49,19 +50,28 @@ describe("users.controller", () => {
     );
 
     expect(correctPasswordMatch).toBe(true);
+
+    const message = await getUserEmail(email);
+
+    expect(message.Content.Headers.To[0]).toContain(email.toLowerCase());
+    expect(message.Content.Headers.Subject[0]).toBe("Verifique seu e-mail");
+
+    const active_link = message.Content.Body.match(/http?:\/\/\S+/)[0];
+
+    expect(active_link).toStrictEqual(expect.any(String));
   });
 
   test("create a duplicated email", async () => {
     const userEmail = faker.internet.email();
 
-    await request.post("/users/register").send({
+    await request.post("/v1/users/register").send({
       first_name: faker.person.firstName(),
       last_name: faker.person.lastName(),
       email: userEmail,
       password: "123456",
     });
 
-    const response = await request.post("/users/register").send({
+    const response = await request.post("/v1/users/register").send({
       first_name: faker.person.firstName(),
       last_name: faker.person.lastName(),
       email: userEmail,

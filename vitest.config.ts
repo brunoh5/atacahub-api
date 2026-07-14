@@ -4,6 +4,7 @@ export default defineConfig({
   test: {
     globals: true,
     root: "./",
+    maxWorkers: 1,
   },
   resolve: {
     tsconfigPaths: true

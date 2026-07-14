@@ -27,7 +27,7 @@ export class PgUsersRepository implements UsersRepository {
     const queryResult = await this.database.query({
       text: `
         INSERT INTO users(first_name, last_name, email, password_hash) 
-        VALUES($1, $2, LOWER($3), $4) RETURNING id, is_active, email
+        VALUES($1, $2, LOWER($3), $4) RETURNING id, is_active, email, first_name
       `,
       values: [
         userInputValues.first_name,

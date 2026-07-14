@@ -4,4 +4,5 @@ export interface User {
   last_name: string;
   email: string;
   password_hash: string;
+  is_active: boolean
 }

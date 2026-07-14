@@ -325,3 +325,22 @@ Entidades de negócio poderão utilizar o campo `version` para controle otimista
 ## JSONB
 
 Será utilizado apenas quando houver necessidade de armazenar estruturas flexíveis, como registros de auditoria.
+
+# Entidade 009 - ActiveTokens
+
+## Tabela
+`active_tokens`
+
+## Campos
+| Campo      | Tipo        | Obrigatório | Observação           |
+| ---------- | ----------- | ----------- | -------------------- |
+| id         | UUID        | Sim         | Chave Primária       |
+| user_id    | UUID        | Sim         | FK users             |
+| token_hash | TEXT        | Sim         | Hash do token        |
+| type       | VARCHAR(50) | Sim         | Tipo do token        |
+| expires_at | TIMESTAMP   | Sim         | Expiração            |
+| used_at    | TIMESTAMP   | Não         | Data de utilização   |
+| revoked_at | TIMESTAMP   | Não         | Revogado manualmente |
+| metadata   | JSONB       | Não         | Dados adicionais     |
+| created_at | TIMESTAMP   | Sim         | Data de criação      |
+
