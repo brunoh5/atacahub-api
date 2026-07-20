@@ -48,8 +48,7 @@ export async function up(pgm: MigrationBuilder): Promise<void> {
     }
   });
 
-  pgm.createIndex('users', 'is_active');
-  pgm.createIndex('users', 'deleted_at');
+  pgm.createIndex('users', ['is_active', "deleted_at"]);
 }
 
 export async function down(pgm: MigrationBuilder): Promise<void> {

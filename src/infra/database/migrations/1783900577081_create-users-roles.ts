@@ -116,7 +116,7 @@ export async function up(pgm: MigrationBuilder): Promise<void> {
     }
   });
 
-  pgm.addConstraint("role_permissions", "PK_role_id_permission_id", {
+  pgm.addConstraint("role_permissions", "pk_role_id_permission_id", {
     primaryKey: ["role_id", "permission_id"]
   });
 }

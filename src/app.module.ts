@@ -5,7 +5,9 @@ import { DatabaseModule } from "./infra/database/database.module";
 import { EmailModule } from "./infra/email/email.module";
 import { envSchema } from "./infra/env/env";
 import { EnvModule } from "./infra/env/env.module";
-import { AuthModule } from "./modules/auth/auth.module";
+import { CustomerModule } from "./modules/customers/customers.module";
+import { IamModule } from "./modules/iam/iam.module";
+import { UsersModule } from "./modules/users/users.module";
 import { EventsModule } from "./shared/events/events.module";
 
 @Module({
@@ -17,9 +19,11 @@ import { EventsModule } from "./shared/events/events.module";
     EventEmitterModule.forRoot({ wildcard: true, delimiter: "." }),
     EnvModule,
     DatabaseModule,
-    EventsModule,
-    AuthModule,
     EmailModule,
+    EventsModule,
+    IamModule,
+    UsersModule,
+    CustomerModule,
   ],
 })
 export class AppModule { }
