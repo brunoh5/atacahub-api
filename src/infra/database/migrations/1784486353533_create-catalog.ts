@@ -111,6 +111,14 @@ export async function up(pgm: MigrationBuilder): Promise<void> {
 
   pgm.createIndex("suppliers", ["company_name, is_active"]);
 
+  pgm.createType("product_status", [
+    "draft",
+    "active",
+    "inactive",
+    "discontinued",
+    "archived"
+  ])
+
   pgm.createTable("products", {
     id: {
       type: 'uuid',
@@ -142,7 +150,7 @@ export async function up(pgm: MigrationBuilder): Promise<void> {
       unique: true,
     },
     status: {
-      type: "varchar(30)",
+      type: "product_status",
       notNull: true,
     },
     deleted_at: "timestamptz",
@@ -169,7 +177,7 @@ export async function up(pgm: MigrationBuilder): Promise<void> {
     product_id: {
       type: "uuid",
       notNull: true,
-      references: "categories"
+      references: "products"
     },
     sku: {
       type: "varchar(100)",
@@ -179,17 +187,16 @@ export async function up(pgm: MigrationBuilder): Promise<void> {
     barcode: {
       type: "varchar(100)",
       unique: true,
-      notNull: true,
     },
     price: {
       type: "integer",
       notNull: true,
     },
     cost_price: "integer",
-    wight: "integer",
-    width: "integer",
-    height: "integer",
-    length: "integer",
+    weight_in_g: "integer",
+    width_in_mm: "integer",
+    height_in_mm: "integer",
+    length_in_mm: "integer",
     is_active: {
       type: "boolean",
       default: true,

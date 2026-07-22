@@ -5,6 +5,7 @@ import { DatabaseModule } from "./infra/database/database.module";
 import { EmailModule } from "./infra/email/email.module";
 import { envSchema } from "./infra/env/env";
 import { EnvModule } from "./infra/env/env.module";
+import { CatalogyModule } from "./modules/catalogy/catalogy.module";
 import { CustomerModule } from "./modules/customers/customers.module";
 import { IamModule } from "./modules/iam/iam.module";
 import { UsersModule } from "./modules/users/users.module";
@@ -24,6 +25,7 @@ import { EventsModule } from "./shared/events/events.module";
     IamModule,
     UsersModule,
     CustomerModule,
+    CatalogyModule,
   ],
 })
 export class AppModule { }

@@ -5,9 +5,8 @@ import { EventService } from "./events.service";
 export interface Event {
   entity_id?: string;
   entity_type: string;
-  user_id: string;
+  user_id?: string;
   action: string;
-  created_at: Date;
   ip_address?: string;
   user_agent?: string;
   old_data?: unknown | null;

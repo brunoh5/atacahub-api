@@ -5,4 +5,8 @@ export interface Category {
   slug: string;
   description: string;
   sort_order: number;
+  category: {
+    slug: string;
+    name: string;
+  }
 }
