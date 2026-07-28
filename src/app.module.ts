@@ -8,6 +8,7 @@ import { EnvModule } from "./infra/env/env.module";
 import { CatalogyModule } from "./modules/catalogy/catalogy.module";
 import { CustomerModule } from "./modules/customers/customers.module";
 import { IamModule } from "./modules/iam/iam.module";
+import { InventoryModule } from "./modules/inventory/inventory.module";
 import { UsersModule } from "./modules/users/users.module";
 import { EventsModule } from "./shared/events/events.module";
 
@@ -26,6 +27,7 @@ import { EventsModule } from "./shared/events/events.module";
     UsersModule,
     CustomerModule,
     CatalogyModule,
+    InventoryModule,
   ],
 })
 export class AppModule { }

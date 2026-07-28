@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { ConflictException, Injectable } from "@nestjs/common";
 import { createSlug } from "@/shared/create-slug";
 import { CreateProductDTO } from "../dtos/create-product.dto";
 import { ProductsRepository } from "../repositories/products-repository";
@@ -8,9 +8,17 @@ export class ProductService {
   constructor(private readonly productRepository: ProductsRepository) { }
 
   async create(createProductDto: CreateProductDTO) {
+    const slug = createSlug(createProductDto.name);
+
+    const checkIfSlugExists = await this.productRepository.findBySlug(slug);
+
+    if (checkIfSlugExists) {
+      throw new ConflictException("Produto com slug já cadastrado, verifique se o produto já foi cadastrado")
+    }
+
     const product = await this.productRepository.create(
       createProductDto,
-      createSlug(createProductDto.name),
+      slug,
     );
 
     for (const [index, variantData] of createProductDto.variants.entries()) {

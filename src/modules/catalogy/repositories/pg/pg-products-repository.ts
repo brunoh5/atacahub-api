@@ -11,6 +11,17 @@ import { ProductsRepository } from "../products-repository";
 @Injectable()
 export class PgProductsRepository implements ProductsRepository {
   constructor(private readonly databaseService: DatabaseService) { }
+  async findBySlug(slug: string): Promise<Product | null> {
+    const result = await this.databaseService.query({
+      text: `
+        SELECT * FROM products WHERE slug = $1
+      `,
+      values: [slug]
+    })
+
+
+    return result.rows[0];
+  }
 
   async create(
     createProductDto: CreateProductDTO,
@@ -124,6 +135,7 @@ export class PgProductsRepository implements ProductsRepository {
       text: /* sql */ `
         WITH variants AS (
           SELECT
+            pv.id,
             pv.sku,
             pv.price,
             pv.cost_price,
@@ -142,7 +154,7 @@ export class PgProductsRepository implements ProductsRepository {
             ON attributes.id = attribute_values.attribute_id
           WHERE product_id = $1
           AND pv.is_active = true
-          GROUP BY pv.sku, pv.cost_price, pv.price
+          GROUP BY pv.id, pv.sku, pv.cost_price, pv.price
         )
         SELECT
           p.name,

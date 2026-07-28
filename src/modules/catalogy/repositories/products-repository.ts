@@ -10,4 +10,5 @@ export abstract class ProductsRepository {
   abstract getVariantQuantity(product_id: string): Promise<number>;
   abstract createAttribute(attributeInputValues: CreateAttributeDto): Promise<void>
   abstract getProductInfoById(id: string): Promise<ProductInfo>
+  abstract findBySlug(slug: string): Promise<Product | null>
 }
