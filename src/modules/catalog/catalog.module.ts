@@ -23,4 +23,4 @@ import { ProductService } from "./services/product.service";
   ],
   controllers: [CategoryController, ProductController],
 })
-export class CatalogyModule { }
+export class CatalogModule { }
