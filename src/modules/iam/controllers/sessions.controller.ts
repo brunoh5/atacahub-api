@@ -7,11 +7,13 @@ import {
   Req,
   Res,
 } from "@nestjs/common";
+import { Throttle } from "@nestjs/throttler";
 import type { Request, Response } from "express";
 import { EnvService } from "@/infra/env/env.service";
 import { LoginDTO } from "../dtos/login.dto";
 import { SessionService } from "../services/session.service";
 
+@Throttle({ default: { limit: 5, ttl: 60000 } })
 @Controller("/sessions")
 export class SessionsController {
   constructor(

@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { EventEmitterModule } from "@nestjs/event-emitter";
+import { ThrottlerModule } from "@nestjs/throttler";
 import { DatabaseModule } from "./infra/database/database.module";
 import { EmailModule } from "./infra/email/email.module";
 import { envSchema } from "./infra/env/env";
@@ -17,6 +18,14 @@ import { EventsModule } from "./shared/events/events.module";
     ConfigModule.forRoot({
       validate: (env) => envSchema.parse(env),
       isGlobal: true,
+    }),
+    ThrottlerModule.forRoot({
+      throttlers: [
+        {
+          ttl: 60000,
+          limit: 100,
+        },
+      ],
     }),
     EventEmitterModule.forRoot({ wildcard: true, delimiter: "." }),
     EnvModule,
