@@ -1,25 +1,25 @@
 import { Injectable } from "@nestjs/common";
 import { DatabaseService } from "@/infra/database/database.service";
+import { ActiveTokensRepository } from "../../../users/repositories/ActiveTokensRepository";
 import { CreateActiveTokenDTO } from "../../dtos/create-active-token.dto";
 import { UserToken } from "../../interfaces/UserToken";
-import { ActiveTokensRepository } from "../../../users/repositories/ActiveTokensRepository";
 
 @Injectable()
 export class PgActiveTokensRepository implements ActiveTokensRepository {
   constructor(private readonly database: DatabaseService) { }
 
   async activeUser(user_id: string): Promise<void> {
-    await this.database.transactions(async query => {
+    await this.database.transactions(async (query) => {
       await query({
         text: `UPDATE active_tokens SET used_at = now() WHERE user_id = $1`,
-        values: [user_id]
+        values: [user_id],
       });
 
       await query({
         text: `UPDATE users SET is_active = true WHERE id = $1`,
-        values: [user_id]
+        values: [user_id],
       });
-    })
+    });
   }
 
   async findByUserToken(token: string): Promise<UserToken> {

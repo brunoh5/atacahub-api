@@ -1,5 +1,5 @@
-import { CreateActiveTokenDTO } from "../../iam/dtos/create-active-token.dto";
-import { UserToken } from "../../iam/interfaces/UserToken";
+import { CreateActiveTokenDTO } from "../dtos/create-active-token.dto";
+import { UserToken } from "../interfaces/UserToken";
 
 export abstract class ActiveTokensRepository {
   abstract saveToken(tokenInputValues: CreateActiveTokenDTO): Promise<void>

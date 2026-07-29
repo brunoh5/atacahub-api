@@ -25,7 +25,7 @@ export class EmailService {
       await this.transporter.sendMail(emailOptions);
 
       this.logger.debug("Email sent");
-    } catch (err) {
+    } catch (err: any) {
       throw new Error(err);
     }
   }
