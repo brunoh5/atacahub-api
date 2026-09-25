@@ -1,5 +1,5 @@
-import type { CreateUserDTO } from "../../users/dtos/create-user.dto";
-import { User } from "../../users/interfaces/User";
+import type { CreateUserDTO } from "../../users/dtos/create-user.dto.js";
+import { User } from "../../users/interfaces/User.js";
 
 export abstract class UsersRepository {
   abstract createUser(userInputValues: CreateUserDTO): Promise<User>;

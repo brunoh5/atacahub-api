@@ -1,6 +1,6 @@
 import { ConflictException, Injectable } from "@nestjs/common";
-import { CreateWarehouseDTO } from "../dtos/create-warehouse.dto";
-import { WarehousesRepository } from "../repositories/warehouses-repository";
+import { CreateWarehouseDTO } from "../dtos/create-warehouse.dto.js";
+import { WarehousesRepository } from "../repositories/warehouses-repository.js";
 
 @Injectable()
 export class WarehouseService {

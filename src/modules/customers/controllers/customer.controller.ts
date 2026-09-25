@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
-import { CreateCustomerDTO } from "../dtos/create-customer.dto";
-import { CustomerService } from "../services/customer.service";
+import { CreateCustomerDTO } from "../dtos/create-customer.dto.js";
+import { CustomerService } from "../services/customer.service.js";
 
 interface CreateCustomerBody {
   access_token: string,

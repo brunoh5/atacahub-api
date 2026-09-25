@@ -1,12 +1,12 @@
 import { Injectable } from "@nestjs/common";
 import { QueryResult } from "pg";
-import { DatabaseService } from "@/infra/database/database.service";
-import { CreateAttributeDto } from "../../dtos/create-attribute.dto";
-import { CreateProductDTO } from "../../dtos/create-product.dto";
-import { CreateVariantDTO } from "../../dtos/create-variant.dto";
-import { Product, ProductInfo } from "../../interfaces/Product";
-import { ProductVariant } from "../../interfaces/ProductVariant";
-import { ProductsRepository } from "../products-repository";
+import { DatabaseService } from "@/infra/database/database.service.js";
+import { CreateAttributeDto } from "../../dtos/create-attribute.dto.js";
+import { CreateProductDTO } from "../../dtos/create-product.dto.js";
+import { CreateVariantDTO } from "../../dtos/create-variant.dto.js";
+import { Product, ProductInfo } from "../../interfaces/Product.js";
+import { ProductVariant } from "../../interfaces/ProductVariant.js";
+import { ProductsRepository } from "../products-repository.js";
 
 @Injectable()
 export class PgProductsRepository implements ProductsRepository {
@@ -96,7 +96,7 @@ export class PgProductsRepository implements ProductsRepository {
         values: [attributeInputValues.code],
       });
 
-      if (attributeSelectQuery.rowCount! < 1) {
+      if (attributeSelectQuery.rowCount === 0) {
         attributeSelectQuery = await tx({
           text: `
             INSERT INTO attributes(name, code)

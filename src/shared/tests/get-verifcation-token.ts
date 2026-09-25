@@ -1,4 +1,4 @@
-import { getUserEmail } from "./get-user-email";
+import { getUserEmail } from "./get-user-email.js";
 
 export async function getVerificationToken(email: string) {
   const message = await getUserEmail(email);

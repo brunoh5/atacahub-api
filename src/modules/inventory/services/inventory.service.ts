@@ -1,7 +1,7 @@
 import { BadRequestException, ConflictException, Injectable } from "@nestjs/common";
-import { AddNewToInventoryDTO } from "../dtos/add-new-to-inventory.dto";
-import { InventoriesRepository } from "../repositories/inventories-repository";
-import { WarehousesRepository } from "../repositories/warehouses-repository";
+import { AddNewToInventoryDTO } from "../dtos/add-new-to-inventory.dto.js";
+import { InventoriesRepository } from "../repositories/inventories-repository.js";
+import { WarehousesRepository } from "../repositories/warehouses-repository.js";
 
 @Injectable()
 export class InventoryService {

@@ -1,7 +1,7 @@
-import { UsersRepository } from "@/modules/users/repositories/UsersRespository";
-import { LoginDTO } from "../dtos/login.dto";
+import { UsersRepository } from "@/modules/users/repositories/UsersRespository.js";
+import { LoginDTO } from "../dtos/login.dto.js";
 import { JwtService } from "@nestjs/jwt";
-import { SessionsRepository } from "../repositories/SessionsRepository";
+import { SessionsRepository } from "../repositories/SessionsRepository.js";
 import { BadRequestException, ForbiddenException, Injectable, NotFoundException, UnauthorizedException } from "@nestjs/common";
 import { verify } from "argon2";
 

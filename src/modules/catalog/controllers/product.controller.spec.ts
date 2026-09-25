@@ -1,8 +1,8 @@
 import { INestApplication } from "@nestjs/common";
-import TestAgent from "supertest/lib/agent";
-import { createTestApp } from "@/infra/create-test-app";
-import { DatabaseService } from "@/infra/database/database.service";
-import faker from "@/shared/faker";
+import TestAgent from "supertest/lib/agent.js";
+import { createTestApp } from "@/infra/create-test-app.js";
+import { DatabaseService } from "@/infra/database/database.service.js";
+import faker from "@/shared/faker.js";
 
 describe("product.controller", () => {
   let app: INestApplication;

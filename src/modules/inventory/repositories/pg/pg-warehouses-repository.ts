@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common";
-import { WarehousesRepository } from "../warehouses-repository";
-import { CreateWarehouseDTO } from "../../dtos/create-warehouse.dto";
-import { Warehouse } from "../../interfaces/Warehouse";
-import { DatabaseService } from "@/infra/database/database.service";
+import { WarehousesRepository } from "../warehouses-repository.js";
+import { CreateWarehouseDTO } from "../../dtos/create-warehouse.dto.js";
+import { Warehouse } from "../../interfaces/Warehouse.js";
+import { DatabaseService } from "@/infra/database/database.service.js";
 
 @Injectable()
 export class PgWarehousesRepository implements WarehousesRepository {

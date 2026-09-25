@@ -3,9 +3,9 @@ import { NestFactory } from "@nestjs/core";
 import type { NestExpressApplication } from "@nestjs/platform-express";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import cookieParser from "cookie-parser";
-import { AppModule } from "./app.module";
-import { DatabaseService } from "./infra/database/database.service";
-import { EnvService } from "./infra/env/env.service";
+import { AppModule } from "./app.module.js";
+import { DatabaseService } from "./infra/database/database.service.js";
+import { EnvService } from "./infra/env/env.service.js";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);

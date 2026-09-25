@@ -1,11 +1,11 @@
 import { Module } from "@nestjs/common";
 import { JwtModule } from "@nestjs/jwt";
-import { EnvModule } from "@/infra/env/env.module";
-import { EnvService } from "@/infra/env/env.service";
-import { CustomerController } from "./controllers/customer.controller";
-import { CustomerRepository } from "./repositories/customer-repository";
-import { PgCustomerRepository } from "./repositories/pg/pg-customer-repository";
-import { CustomerService } from "./services/customer.service";
+import { EnvModule } from "@/infra/env/env.module.js";
+import { EnvService } from "@/infra/env/env.service.js";
+import { CustomerController } from "./controllers/customer.controller.js";
+import { CustomerRepository } from "./repositories/customer-repository.js";
+import { PgCustomerRepository } from "./repositories/pg/pg-customer-repository.js";
+import { CustomerService } from "./services/customer.service.js";
 
 @Module({
   imports: [

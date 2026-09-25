@@ -2,9 +2,9 @@ import { type INestApplication, VersioningType } from "@nestjs/common";
 import { Test } from "@nestjs/testing";
 import cookieParser from "cookie-parser";
 import request from "supertest";
-import type TestAgent from "supertest/lib/agent";
-import { AppModule } from "@/app.module";
-import { DatabaseService } from "./database/database.service";
+import type TestAgent from "supertest/lib/agent.js";
+import { AppModule } from "@/app.module.js";
+import { DatabaseService } from "./database/database.service.js";
 
 export async function createTestApp(): Promise<{
   app: INestApplication;

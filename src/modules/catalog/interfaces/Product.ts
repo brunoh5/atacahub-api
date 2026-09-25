@@ -1,4 +1,4 @@
-import { ProductVariant } from "./ProductVariant";
+import { ProductVariant } from "./ProductVariant.js";
 
 export interface Product {
   id: string;

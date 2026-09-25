@@ -1,6 +1,6 @@
 import { HttpStatus, INestApplication } from "@nestjs/common";
 import argon2 from "argon2";
-import TestAgent from "supertest/lib/agent";
+import TestAgent from "supertest/lib/agent.js";
 import { createTestApp } from "@/infra/create-test-app";
 import faker from "@/shared/faker";
 import { getUserEmail } from "@/shared/tests/get-user-email";

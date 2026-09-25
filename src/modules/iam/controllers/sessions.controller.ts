@@ -9,9 +9,9 @@ import {
 } from "@nestjs/common";
 import { Throttle } from "@nestjs/throttler";
 import type { Request, Response } from "express";
-import { EnvService } from "@/infra/env/env.service";
-import { LoginDTO } from "../dtos/login.dto";
-import { SessionService } from "../services/session.service";
+import { EnvService } from "@/infra/env/env.service.js";
+import { LoginDTO } from "../dtos/login.dto.js";
+import { SessionService } from "../services/session.service.js";
 
 @Throttle({ default: { limit: 5, ttl: 60000 } })
 @Controller("/sessions")

@@ -1,5 +1,5 @@
-import { CreateCategoryDTO } from "../dtos/create-category.dto";
-import { Category } from "../interfaces/Category";
+import { CreateCategoryDTO } from "../dtos/create-category.dto.js";
+import { Category } from "../interfaces/Category.js";
 
 export abstract class CategoriesRepository {
   abstract findByName(name: string): Promise<Category | null>;

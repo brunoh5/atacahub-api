@@ -11,7 +11,7 @@ import {
   type QueryResult,
   type QueryResultRow,
 } from "pg";
-import { EnvService } from "../env/env.service";
+import { EnvService } from "../env/env.service.js";
 
 type QueryFn = <T extends QueryResultRow = QueryResultRow>(query: {
   text: string;
@@ -60,11 +60,11 @@ export class DatabaseService implements OnModuleInit, OnModuleDestroy {
     }
   }
 
-  async query(query: QueryConfig): Promise<QueryResult> {
+  async query<T extends QueryResultRow>(query: QueryConfig): Promise<QueryResult<T>> {
     const start = performance.now();
 
     try {
-      const result = await this.pool.query(query);
+      const result = await this.pool.query<T>(query);
 
       const duration = performance.now() - start;
 

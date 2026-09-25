@@ -24,7 +24,7 @@ O sistema segue o padrão de monólito modular, onde:
 
 Os módulos são organizados por domínio de negócio:
 
-- auth (autenticação e autorização)
+- iam (autenticação e autorização)
 - users (gestão de usuários)
 - products (catálogo de produtos)
 - orders (pedidos)

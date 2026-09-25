@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common";
-import { DatabaseService } from "@/infra/database/database.service";
-import { CreateCategoryDTO } from "../../dtos/create-category.dto";
-import { Category } from "../../interfaces/Category";
-import { CategoriesRepository } from "../categories-repository";
+import { DatabaseService } from "@/infra/database/database.service.js";
+import { CreateCategoryDTO } from "../../dtos/create-category.dto.js";
+import { Category } from "../../interfaces/Category.js";
+import { CategoriesRepository } from "../categories-repository.js";
 
 @Injectable()
 export class PgCategoriesRepository implements CategoriesRepository {

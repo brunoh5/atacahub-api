@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { OnEvent } from "@nestjs/event-emitter";
-import { EventService } from "./events.service";
+import { EventService } from "./events.service.js";
 
 export interface Event {
   entity_id?: string;

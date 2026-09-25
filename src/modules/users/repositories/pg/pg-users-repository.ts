@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common";
-import { DatabaseService } from "@/infra/database/database.service";
-import type { CreateUserDTO } from "../../dtos/create-user.dto";
-import { User } from "../../interfaces/User";
-import type { UsersRepository } from "../UsersRespository";
+import { DatabaseService } from "@/infra/database/database.service.js";
+import type { CreateUserDTO } from "../../dtos/create-user.dto.js";
+import { User } from "../../interfaces/User.js";
+import type { UsersRepository } from "../UsersRespository.js";
 
 @Injectable()
 export class PgUsersRepository implements UsersRepository {

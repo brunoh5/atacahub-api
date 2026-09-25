@@ -1,6 +1,6 @@
 import { ConflictException, Injectable } from "@nestjs/common";
-import { CreateRoleDTO } from "../dtos/create-role.dto";
-import { RoleRepository } from "../repositories/RoleRepository";
+import { CreateRoleDTO } from "../dtos/create-role.dto.js";
+import { RoleRepository } from "../repositories/RoleRepository.js";
 
 @Injectable()
 export class RoleService {

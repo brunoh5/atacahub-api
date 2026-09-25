@@ -1,5 +1,5 @@
-import { AddNewToInventoryDTO } from "../dtos/add-new-to-inventory.dto";
-import { Inventory } from "../interfaces/Inventory";
+import { AddNewToInventoryDTO } from "../dtos/add-new-to-inventory.dto.js";
+import { Inventory } from "../interfaces/Inventory.js";
 
 export interface addNewProduct extends AddNewToInventoryDTO {
   warehouse_id: string;

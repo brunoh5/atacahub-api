@@ -1,10 +1,10 @@
 import { Injectable } from "@nestjs/common";
-import { DatabaseService } from "@/infra/database/database.service";
-import { Inventory } from "../../interfaces/Inventory";
+import { DatabaseService } from "@/infra/database/database.service.js";
+import { Inventory } from "../../interfaces/Inventory.js";
 import {
   addNewProduct,
   InventoriesRepository,
-} from "../inventories-repository";
+} from "../inventories-repository.js";
 
 @Injectable()
 export class PgInventoriesRepository implements InventoriesRepository {

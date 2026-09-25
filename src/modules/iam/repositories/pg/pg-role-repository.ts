@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common";
-import { DatabaseService } from "@/infra/database/database.service";
-import { CreateRoleDTO } from "../../dtos/create-role.dto";
-import { Role } from "../../interfaces/Role";
-import { RoleRepository } from "../RoleRepository";
+import { DatabaseService } from "@/infra/database/database.service.js";
+import { CreateRoleDTO } from "../../dtos/create-role.dto.js";
+import { Role } from "../../interfaces/Role.js";
+import { RoleRepository } from "../RoleRepository.js";
 
 @Injectable()
 export class PgRoleRepository implements RoleRepository {

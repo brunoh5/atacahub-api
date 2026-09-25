@@ -6,15 +6,17 @@
   "directories": {
     "doc": "docs"
   },
+  "type": "module",
   "scripts": {
     "services:up": "docker compose -f src/infra/compose.yml up -d",
-    "start:dev": "npm run services:up && nest start --watch",
-    "test": "npm run services:up && vitest",
+    "start:dev": "pnpm services:up && nest start --watch",
+    "test": "pnpm services:up && vitest",
     "build": "nest build",
     "migrations:create": "node-pg-migrate create -m src/infra/database/migrations --envPath .env -j ts",
     "migrations:down": "node-pg-migrate -m src/infra/database/migrations --envPath .env down -j ts",
     "migrations:up": "node-pg-migrate -m src/infra/database/migrations up -j ts",
-    "services:down": "docker compose -f src/infra/compose.yml down"
+    "services:down": "docker compose -f src/infra/compose.yml down",
+    "biome:fix": "pnpx @biomejs/biome lint --write ./src"
   },
   "repository": {
     "type": "git",

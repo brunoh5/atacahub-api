@@ -1,17 +1,17 @@
 import { Module } from "@nestjs/common";
 import { JwtModule } from "@nestjs/jwt";
-import { EnvModule } from "@/infra/env/env.module";
-import { EnvService } from "@/infra/env/env.service";
-import { PgUsersRepository } from "../users/repositories/pg/pg-users-repository";
-import { UsersRepository } from "../users/repositories/UsersRespository";
-import { RolesController } from "./controllers/roles.controller";
-import { SessionsController } from "./controllers/sessions.controller";
-import { PgRoleRepository } from "./repositories/pg/pg-role-repository";
-import { PgSessionsRepository } from "./repositories/pg/pg-sessions-repository";
-import { RoleRepository } from "./repositories/RoleRepository";
-import { SessionsRepository } from "./repositories/SessionsRepository";
-import { RoleService } from "./services/role.service";
-import { SessionService } from "./services/session.service";
+import { EnvModule } from "@/infra/env/env.module.js";
+import { EnvService } from "@/infra/env/env.service.js";
+import { PgUsersRepository } from "../users/repositories/pg/pg-users-repository.js";
+import { UsersRepository } from "../users/repositories/UsersRespository.js";
+import { RolesController } from "./controllers/roles.controller.js";
+import { SessionsController } from "./controllers/sessions.controller.js";
+import { PgRoleRepository } from "./repositories/pg/pg-role-repository.js";
+import { PgSessionsRepository } from "./repositories/pg/pg-sessions-repository.js";
+import { RoleRepository } from "./repositories/RoleRepository.js";
+import { SessionsRepository } from "./repositories/SessionsRepository.js";
+import { RoleService } from "./services/role.service.js";
+import { SessionService } from "./services/session.service.js";
 
 @Module({
   imports: [

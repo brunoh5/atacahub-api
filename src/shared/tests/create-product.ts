@@ -1,5 +1,5 @@
-import TestAgent from "supertest/lib/agent"
-import faker from "../faker";
+import TestAgent from "supertest/lib/agent.js"
+import faker from "../faker.js";
 
 interface TestData {
   category?: {

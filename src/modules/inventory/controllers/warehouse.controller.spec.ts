@@ -1,7 +1,7 @@
 import { INestApplication } from "@nestjs/common";
-import TestAgent from "supertest/lib/agent";
-import { createTestApp } from "@/infra/create-test-app";
-import { DatabaseService } from "@/infra/database/database.service";
+import TestAgent from "supertest/lib/agent.js";
+import { createTestApp } from "@/infra/create-test-app.js";
+import { DatabaseService } from "@/infra/database/database.service.js";
 
 describe("warehouse.controller", () => {
   let app: INestApplication;

@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common";
-import { DatabaseService } from "@/infra/database/database.service";
-import { ActiveTokensRepository } from "../../../users/repositories/ActiveTokensRepository";
-import { CreateActiveTokenDTO } from "../../dtos/create-active-token.dto";
-import { UserToken } from "../../interfaces/UserToken";
+import { DatabaseService } from "@/infra/database/database.service.js";
+import { ActiveTokensRepository } from "../../../users/repositories/ActiveTokensRepository.js";
+import { CreateActiveTokenDTO } from "../../dtos/create-active-token.dto.js";
+import { UserToken } from "../../interfaces/UserToken.js";
 
 @Injectable()
 export class PgActiveTokensRepository implements ActiveTokensRepository {

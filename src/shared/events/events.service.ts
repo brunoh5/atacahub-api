@@ -1,5 +1,5 @@
-import { DatabaseService } from "@/infra/database/database.service";
-import { Event } from "./event.listener";
+import { DatabaseService } from "@/infra/database/database.service.js";
+import { Event } from "./event.listener.js";
 
 export class EventService {
   constructor(private readonly database: DatabaseService) { }

@@ -2,16 +2,16 @@ import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { EventEmitterModule } from "@nestjs/event-emitter";
 import { ThrottlerModule } from "@nestjs/throttler";
-import { DatabaseModule } from "./infra/database/database.module";
-import { EmailModule } from "./infra/email/email.module";
-import { envSchema } from "./infra/env/env";
-import { EnvModule } from "./infra/env/env.module";
-import { CatalogModule } from "./modules/catalog/catalog.module";
-import { CustomerModule } from "./modules/customers/customers.module";
-import { IamModule } from "./modules/iam/iam.module";
-import { InventoryModule } from "./modules/inventory/inventory.module";
-import { UsersModule } from "./modules/users/users.module";
-import { EventsModule } from "./shared/events/events.module";
+import { DatabaseModule } from "./infra/database/database.module.js";
+import { EmailModule } from "./infra/email/email.module.js";
+import { envSchema } from "./infra/env/env.js";
+import { EnvModule } from "./infra/env/env.module.js";
+import { CatalogModule } from "./modules/catalog/catalog.module.js";
+import { CustomerModule } from "./modules/customers/customers.module.js";
+import { IamModule } from "./modules/iam/iam.module.js";
+import { InventoryModule } from "./modules/inventory/inventory.module.js";
+import { UsersModule } from "./modules/users/users.module.js";
+import { EventsModule } from "./shared/events/events.module.js";
 
 @Module({
   imports: [

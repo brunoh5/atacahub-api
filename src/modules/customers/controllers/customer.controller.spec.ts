@@ -1,9 +1,9 @@
 import { INestApplication } from "@nestjs/common";
-import TestAgent from "supertest/lib/agent";
-import { createTestApp } from "@/infra/create-test-app";
-import { DatabaseService } from "@/infra/database/database.service";
-import faker from "@/shared/faker";
-import { createAndVerifyUser } from "@/shared/tests/create-and-verify-user";
+import TestAgent from "supertest/lib/agent.js";
+import { createTestApp } from "@/infra/create-test-app.js";
+import { DatabaseService } from "@/infra/database/database.service.js";
+import faker from "@/shared/faker.js";
+import { createAndVerifyUser } from "@/shared/tests/create-and-verify-user.js";
 
 let app: INestApplication;
 let request: TestAgent;

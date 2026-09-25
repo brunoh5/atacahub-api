@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { QueryResult } from "pg";
-import { DatabaseService } from "@/infra/database/database.service";
-import { CreateCustomerDTO } from "../../dtos/create-customer.dto";
-import { Customer } from "../../interfaces/Customer";
-import { CustomerRepository } from "../customer-repository";
+import { DatabaseService } from "@/infra/database/database.service.js";
+import { CreateCustomerDTO } from "../../dtos/create-customer.dto.js";
+import { Customer } from "../../interfaces/Customer.js";
+import { CustomerRepository } from "../customer-repository.js";
 
 @Injectable()
 export class PgCustomerRepository implements CustomerRepository {

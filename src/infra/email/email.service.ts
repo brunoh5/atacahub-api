@@ -1,8 +1,8 @@
 import { Injectable, Logger } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { createTransport } from "nodemailer";
-import Mail from "nodemailer/lib/mailer";
-import { EnvService } from "../env/env.service";
+import { SendMailOptions } from "nodemailer";
+import { EnvService } from "../env/env.service.js";
 
 @Injectable()
 export class EmailService {
@@ -20,13 +20,13 @@ export class EmailService {
     },
   });
 
-  async send(emailOptions: Mail.Options) {
+  async send(emailOptions: SendMailOptions) {
     try {
       await this.transporter.sendMail(emailOptions);
 
       this.logger.debug("Email sent");
-    } catch (err: any) {
-      throw new Error(err);
+    } catch (error) {
+      throw new Error(error);
     }
   }
 }

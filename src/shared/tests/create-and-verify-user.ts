@@ -1,6 +1,6 @@
-import TestAgent from "supertest/lib/agent";
-import faker from "../faker";
-import { getVerificationToken } from "./get-verifcation-token";
+import TestAgent from "supertest/lib/agent.js";
+import faker from "../faker.js";
+import { getVerificationToken } from "./get-verifcation-token.js";
 
 type UserData = {
   first_name?: string;

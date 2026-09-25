@@ -1,10 +1,10 @@
 import { ConflictException, HttpException, HttpStatus, Injectable } from "@nestjs/common";
-import { UsersRepository } from "../repositories/UsersRespository";
-import { ActiveTokensRepository } from "@/modules/users/repositories/ActiveTokensRepository";
-import { CreateUserDTO } from "../dtos/create-user.dto";
+import { UsersRepository } from "../repositories/UsersRespository.js";
+import { ActiveTokensRepository } from "@/modules/users/repositories/ActiveTokensRepository.js";
+import { CreateUserDTO } from "../dtos/create-user.dto.js";
 import { hash } from "argon2";
 import { randomBytes } from "node:crypto";
-import { EmailService } from "@/infra/email/email.service";
+import { EmailService } from "@/infra/email/email.service.js";
 
 @Injectable()
 export class UserService {

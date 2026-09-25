@@ -1,7 +1,7 @@
 import { Body, Controller, HttpCode, HttpStatus, Param, Patch, Post } from "@nestjs/common";
 import z from "zod";
-import { UserService } from "../services/user.service";
-import { CreateUserDTO } from "../dtos/create-user.dto";
+import { UserService } from "../services/user.service.js";
+import { CreateUserDTO } from "../dtos/create-user.dto.js";
 
 @Controller("/users")
 export class UsersController {

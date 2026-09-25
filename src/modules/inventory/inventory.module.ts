@@ -1,12 +1,12 @@
 import { Module } from "@nestjs/common";
-import { InventoryController } from "./controllers/inventory.controller";
-import { WarehouseController } from "./controllers/warehouse.controller";
-import { InventoriesRepository } from "./repositories/inventories-repository";
-import { PgInventoriesRepository } from "./repositories/pg/pg-inventories-repository";
-import { PgWarehousesRepository } from "./repositories/pg/pg-warehouses-repository";
-import { WarehousesRepository } from "./repositories/warehouses-repository";
-import { InventoryService } from "./services/inventory.service";
-import { WarehouseService } from "./services/warehouse.service";
+import { InventoryController } from "./controllers/inventory.controller.js";
+import { WarehouseController } from "./controllers/warehouse.controller.js";
+import { InventoriesRepository } from "./repositories/inventories-repository.js";
+import { PgInventoriesRepository } from "./repositories/pg/pg-inventories-repository.js";
+import { PgWarehousesRepository } from "./repositories/pg/pg-warehouses-repository.js";
+import { WarehousesRepository } from "./repositories/warehouses-repository.js";
+import { InventoryService } from "./services/inventory.service.js";
+import { WarehouseService } from "./services/warehouse.service.js";
 
 @Module({
   providers: [

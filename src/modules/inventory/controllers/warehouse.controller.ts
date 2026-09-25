@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from "@nestjs/common";
-import { CreateWarehouseDTO } from "../dtos/create-warehouse.dto";
-import { WarehouseService } from "../services/warehouse.service";
+import { CreateWarehouseDTO } from "../dtos/create-warehouse.dto.js";
+import { WarehouseService } from "../services/warehouse.service.js";
 
 @Controller("/warehouses")
 export class WarehouseController {

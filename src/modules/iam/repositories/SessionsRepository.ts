@@ -1,6 +1,6 @@
-import { SaveRefreshTokenDTO } from "../dtos/save-refresh-token.dto";
-import { SaveSessionDTO } from "../dtos/save-session.dto";
-import { RefreshToken } from "../interfaces/RefreshToken";
+import { SaveRefreshTokenDTO } from "../dtos/save-refresh-token.dto.js";
+import { SaveSessionDTO } from "../dtos/save-session.dto.js";
+import { RefreshToken } from "../interfaces/RefreshToken.js";
 
 export abstract class SessionsRepository {
   abstract saveSession(sessionInputValues: SaveSessionDTO): Promise<void>

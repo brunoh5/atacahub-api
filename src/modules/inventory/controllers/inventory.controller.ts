@@ -1,6 +1,6 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from "@nestjs/common";
-import { AddNewToInventoryDTO } from "../dtos/add-new-to-inventory.dto";
-import { InventoryService } from "../services/inventory.service";
+import { AddNewToInventoryDTO } from "../dtos/add-new-to-inventory.dto.js";
+import { InventoryService } from "../services/inventory.service.js";
 
 @Controller("/inventories")
 export class InventoryController {

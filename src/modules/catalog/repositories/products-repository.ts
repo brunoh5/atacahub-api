@@ -1,8 +1,8 @@
-import { CreateAttributeDto } from "../dtos/create-attribute.dto";
-import { CreateProductDTO } from "../dtos/create-product.dto";
-import { CreateVariantDTO } from "../dtos/create-variant.dto";
-import { Product, ProductInfo } from "../interfaces/Product";
-import { ProductVariant } from "../interfaces/ProductVariant";
+import { CreateAttributeDto } from "../dtos/create-attribute.dto.js";
+import { CreateProductDTO } from "../dtos/create-product.dto.js";
+import { CreateVariantDTO } from "../dtos/create-variant.dto.js";
+import { Product, ProductInfo } from "../interfaces/Product.js";
+import { ProductVariant } from "../interfaces/ProductVariant.js";
 
 export abstract class ProductsRepository {
   abstract create(createProductDto: CreateProductDTO, slug: string): Promise<Product>

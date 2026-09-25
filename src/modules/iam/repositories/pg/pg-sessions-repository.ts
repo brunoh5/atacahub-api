@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
-import { DatabaseService } from "@/infra/database/database.service";
-import { SaveRefreshTokenDTO } from "../../dtos/save-refresh-token.dto";
-import { SaveSessionDTO } from "../../dtos/save-session.dto";
-import { RefreshToken } from "../../interfaces/RefreshToken";
-import { SessionsRepository } from "../SessionsRepository";
+import { DatabaseService } from "@/infra/database/database.service.js";
+import { SaveRefreshTokenDTO } from "../../dtos/save-refresh-token.dto.js";
+import { SaveSessionDTO } from "../../dtos/save-session.dto.js";
+import { RefreshToken } from "../../interfaces/RefreshToken.js";
+import { SessionsRepository } from "../SessionsRepository.js";
 
 @Injectable()
 export class PgSessionsRepository implements SessionsRepository {

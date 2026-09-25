@@ -1,5 +1,5 @@
-import { CreateActiveTokenDTO } from "../dtos/create-active-token.dto";
-import { UserToken } from "../interfaces/UserToken";
+import { CreateActiveTokenDTO } from "../dtos/create-active-token.dto.js";
+import { UserToken } from "../interfaces/UserToken.js";
 
 export abstract class ActiveTokensRepository {
   abstract saveToken(tokenInputValues: CreateActiveTokenDTO): Promise<void>

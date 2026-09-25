@@ -1,8 +1,8 @@
 import { ConflictException, Injectable } from "@nestjs/common";
 import { EventEmitter2 } from "@nestjs/event-emitter";
-import { createSlug } from "@/shared/create-slug";
-import { CreateCategoryDTO } from "../dtos/create-category.dto";
-import { CategoriesRepository } from "../repositories/categories-repository";
+import { createSlug } from "@/shared/create-slug.js";
+import { CreateCategoryDTO } from "../dtos/create-category.dto.js";
+import { CategoriesRepository } from "../repositories/categories-repository.js";
 
 @Injectable()
 export class CategoryService {
